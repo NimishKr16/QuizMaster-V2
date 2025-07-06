@@ -1,7 +1,8 @@
 <template>
   <div
-    class="container d-flex justify-content-center align-items-center min-vh-100"
+    class="container min-vh-100 d-flex flex-column justify-content-center align-items-center"
   >
+    <h2 class="text-center fw-bold mb-4">Welcome Back to QuizMaster</h2>
     <div class="card p-4 shadow-4" style="width: 400px">
       <h4 class="text-center mb-4">Login</h4>
       <form @submit.prevent="login">

@@ -12,7 +12,7 @@ def create_app():
 
     # Initialize extensions
     db.init_app(app)
-    cors.init_app(app, resources={r"/*": {"origins": "http://localhost:8080"}}, supports_credentials=True)
+    cors.init_app(app,  supports_credentials=True)
     jwt.init_app(app)
 
     # Register blueprints

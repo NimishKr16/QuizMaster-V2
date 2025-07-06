@@ -1,9 +1,9 @@
 <template>
   <div
-    class="container-fluid d-flex justify-content-center align-items-center min-vh-100 bg-light"
+    class="container min-vh-100 d-flex flex-column justify-content-center align-items-center"
   >
+    <h2 class="text-center fw-bold mb-4">Register for QuizMaster</h2>
     <div class="card p-4 shadow rounded-5" style="width: 420px">
-      <h3 class="text-center text-primary mb-4">Create Your Account</h3>
       <form @submit.prevent="register">
         <div class="form-outline mb-3">
           <input

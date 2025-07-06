@@ -1,41 +1,15 @@
 <!-- eslint-disable no-unused-vars -->
-<!-- eslint-disable no-unused-vars -->
-<!-- eslint-disable vue/no-parsing-error -->
-<!-- eslint-disable vue/no-use-v-if-with-v-for -->
-<!-- eslint-disable no-unused-vars -->
+
 <template>
-  <nav
-    class="navbar navbar-expand-lg navbar-dark bg-primary px-4 fixed-top shadow"
-  >
-    <div class="container-fluid">
-      <span class="navbar-brand fw-bold">Admin Dashboard</span>
-      <div class="d-flex align-items-center ms-auto">
-        <a class="nav-link text-white me-3" href="/admin-dashboard">
-          <i class="bi bi-journal-text me-1"></i>Quizzes
-        </a>
-        <a class="nav-link text-white me-3" href="/admin-dashboard/users">
-          <i class="bi bi-people-fill me-1"></i>Users
-        </a>
-        <button
-          class="btn btn-danger btn-sm fw-bold"
-          @click="logoutModalVisible = true"
-        >
-          <i class="bi bi-power"></i> Logout
-        </button>
-      </div>
-    </div>
-  </nav>
+  <AdminNavbar @logout="handleLogoutClick" />
   <div style="height: 50px"></div>
   <div class="container">
     <h3 class="text-center mb-4 text-primary fw-bold">
       Quiz Management Dashboard
     </h3>
     <div class="text-center mb-4">
-      <button
-        class="btn fw-bold btn-success"
-        @click="createQuizModalVisible = true"
-      >
-        <i class="bi bi-plus-lg me-1"></i> Add
+      <button class="btn fw-bold btn-success" @click="navigateToAddSubject">
+        <i class="bi bi-plus-lg me-1"></i> Add a Subject
       </button>
     </div>
     <h5 class="fw-bold text-dark mb-3 mt-2">Subjects</h5>
@@ -282,11 +256,21 @@
 import { ref, onMounted } from "vue";
 import axios from "axios";
 import { useToast } from "vue-toastification";
+import { useRouter } from "vue-router";
+import AdminNavbar from "@/components/AdminNavbar.vue";
 
+const handleLogoutClick = () => {
+  logoutModalVisible.value = true;
+};
 const subjects = ref([]);
 const expandedSubjects = ref([]);
 const expandedChapters = ref([]);
 // const expandedQuizzes = ref([]);
+
+const router = useRouter();
+const navigateToAddSubject = () => {
+  router.push("/admin-dashboard/addSubject");
+};
 
 const token = localStorage.getItem("token");
 
